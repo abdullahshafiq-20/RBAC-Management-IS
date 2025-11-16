@@ -3,7 +3,7 @@
 ## 📁 Complete Directory Structure
 
 ```
-hospital_management_system/
+RBAC-Management-IS/
 │
 ├── 📄 app.py                          # Main Streamlit application
 ├── 📄 utils.py                        # Utility functions (encryption, hashing, masking)
@@ -18,31 +18,7 @@ hospital_management_system/
 │
 ├── 📄 README.md                       # Project documentation
 ├── 📄 SETUP_INSTRUCTIONS.md           # Detailed setup guide
-├── 📄 PROJECT_STRUCTURE.md            # This file
-│
-├── 📂 docs/                           # Documentation
-│   ├── assignment_4.pdf               # Original assignment
-│   ├── project_report.pdf             # Your submission report
-│   └── system_diagram.png             # CIA triad diagram
-│
-├── 📂 screenshots/                    # Screenshots for report
-│   ├── login_page.png
-│   ├── admin_dashboard.png
-│   ├── doctor_dashboard.png
-│   ├── receptionist_dashboard.png
-│   ├── anonymization.png
-│   └── audit_logs.png
-│
-├── 📂 logs/                           # Application logs (optional)
-│   └── app.log
-│
-├── 📂 backups/                        # Database backups
-│   └── hospital_db_backup_YYYYMMDD.sql
-│
-└── 📂 tests/                          # Test files (optional)
-    ├── test_utils.py
-    ├── test_database.py
-    └── test_authentication.py
+
 ```
 
 ---

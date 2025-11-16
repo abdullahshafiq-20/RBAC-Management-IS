@@ -1,0 +1,19 @@
+# Hospital Management System - Python Dependencies
+
+# Web Framework
+streamlit==1.31.0
+
+# Database
+psycopg2-binary==2.9.9
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.2
+
+# Security & Encryption
+cryptography==42.0.0
+bcrypt==4.1.2
+
+# Additional utilities
+python-dotenv==1.0.0
+Pillow==10.2.0

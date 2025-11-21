@@ -1,5 +1,8 @@
 # Hospital Management System - Project Structure
 
+## 🌐 Live Link
+https://rbac-is.streamlit.app/
+
 ## 📁 Complete Directory Structure
 
 ```
@@ -7,17 +10,14 @@ RBAC-Management-IS/
 │
 ├── 📄 app.py                          # Main Streamlit application
 ├── 📄 utils.py                        # Utility functions (encryption, hashing, masking)
-├── 📄 config.py                       # Configuration management
-│
-├── 📄 hospital_schema.sql             # PostgreSQL database schema
-│
+├── 📄 database.sql                    # PostgreSQL database schema
 ├── 📄 requirements.txt                # Python dependencies
 ├── 📄 .env.example                    # Environment variables template
 ├── 📄 .env                            # Actual environment variables (DO NOT COMMIT!)
 ├── 📄 .gitignore                      # Git ignore file
 │
 ├── 📄 README.md                       # Project documentation
-├── 📄 SETUP_INSTRUCTIONS.md           # Detailed setup guide
+
 
 ```
 
@@ -27,7 +27,7 @@ RBAC-Management-IS/
 
 ### Core Application Files
 
-#### `app.py`
+#### `streamlit_app.py`
 **Purpose:** Main Streamlit application with UI and business logic
 
 **Key Components:**
@@ -59,23 +59,7 @@ RBAC-Management-IS/
 
 ---
 
-#### `config.py`
-**Purpose:** Centralized configuration management
-
-**Configuration Classes:**
-- `DatabaseConfig` - Database connection settings
-- `SecurityConfig` - Encryption, session, password rules
-- `AppConfig` - General application settings
-- `GDPRConfig` - GDPR compliance settings
-- `RBACConfig` - Role-based access control
-- `LoggingConfig` - Audit log settings
-- `ValidationConfig` - Data validation rules
-
-**Dependencies:** os, dotenv, cryptography
-
----
-
-#### `hospital_schema.sql`
+#### `database.sql`
 **Purpose:** Complete PostgreSQL database schema
 
 **Includes:**
@@ -128,127 +112,12 @@ python-dotenv==1.0.0       # Environment variables
 
 ---
 
-#### `.gitignore`
-**Purpose:** Exclude sensitive files from version control
-
-**Should Include:**
-```
-.env
-__pycache__/
-*.pyc
-*.pyo
-*.log
-.DS_Store
-venv/
-*.db
-backups/
-```
-
----
-
-### Documentation Files
-
-#### `README.md`
-**Purpose:** Quick start guide and project overview
-
-**Sections:**
-- Project description
-- Quick start instructions
-- Features overview
-- Technology stack
-- Contributing guidelines
-
----
-
-#### `SETUP_INSTRUCTIONS.md`
-**Purpose:** Detailed step-by-step setup guide
-
-**Sections:**
-- Prerequisites
-- PostgreSQL setup
-- Python environment setup
-- Configuration
-- Running the application
-- Testing checklist
-- Troubleshooting
-- Bonus features
-
----
-
-#### `PROJECT_STRUCTURE.md`
-**Purpose:** This file - complete project organization
-
----
-
-### Assignment Deliverables
-
-#### `docs/project_report.pdf`
-**Purpose:** Main assignment submission document (3-5 pages)
-
-**Required Sections:**
-1. **System Overview**
-   - Introduction
-   - Technologies used
-   - Architecture overview
-
-2. **CIA Triad Implementation**
-   - Confidentiality measures
-   - Integrity controls
-   - Availability mechanisms
-
-3. **GDPR Compliance**
-   - Data protection measures
-   - User rights implementation
-   - Consent management
-
-4. **Screenshots**
-   - Login page
-   - Admin dashboard
-   - Doctor dashboard
-   - Receptionist dashboard
-   - Anonymization process
-   - Audit logs
-
-5. **Implementation Details**
-   - Database schema
-   - Security measures
-   - Role-based access control
-
-6. **Testing & Results**
-   - Test scenarios
-   - Results
-   - Observations
-
-7. **Conclusion & Future Work**
-
----
-
-#### `screenshots/`
-**Purpose:** Visual documentation for report
-
-**Required Screenshots:**
-1. `login_page.png` - Login interface with credentials shown
-2. `admin_dashboard.png` - Admin view with statistics
-3. `doctor_dashboard.png` - Doctor view with anonymized data
-4. `receptionist_dashboard.png` - Add patient form
-5. `anonymization.png` - Before/after anonymization
-6. `audit_logs.png` - Complete audit trail
-
-**Tips for Screenshots:**
-- Use full-screen mode
-- Include browser tabs showing localhost:8501
-- Highlight key features with arrows/annotations
-- Ensure text is readable
-- Show realistic test data
-
----
-
 ## 🚀 Quick Setup Commands
 
 ### 1. Clone/Create Project
 ```bash
-mkdir hospital_management_system
-cd hospital_management_system
+mkdir RBAC-Management-IS
+cd RBAC-Management-IS
 ```
 
 ### 2. Create Virtual Environment
@@ -285,7 +154,7 @@ python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().d
 
 ### 7. Run Application
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 ### 8. Access Application
@@ -392,183 +261,3 @@ Login with: admin / admin123
 - Clear privacy notices
 - Audit trail for all access
 - Consent management
-
----
-
-## 🧪 Testing Checklist
-
-### Functional Testing
-- [ ] Login with all three roles
-- [ ] Add new patient (receptionist)
-- [ ] View patient list (all roles)
-- [ ] Anonymize patient data (admin)
-- [ ] View audit logs (admin)
-- [ ] Export data to CSV (admin)
-- [ ] Logout functionality
-- [ ] Session persistence
-
-### Security Testing
-- [ ] Password hashing works
-- [ ] Role permissions enforced
-- [ ] Audit logs capture all actions
-- [ ] Data anonymization irreversible
-- [ ] Invalid login blocked
-- [ ] SQL injection prevention
-- [ ] XSS prevention
-
-### Data Validation
-- [ ] Phone number format validation
-- [ ] Email format validation
-- [ ] Required field enforcement
-- [ ] Data type validation
-- [ ] Input sanitization
-
-### GDPR Compliance
-- [ ] Consent checkbox required
-- [ ] Data retention date set
-- [ ] Anonymization available
-- [ ] Audit trail maintained
-- [ ] Export functionality works
-
----
-
-## 📝 Assignment Submission Format
-
-### Folder Structure for Submission
-```
-Assignment4_YourName_YourRollNo/
-│
-├── Source_Code/
-│   ├── app.py
-│   ├── utils.py
-│   ├── config.py
-│   ├── requirements.txt
-│   └── hospital_schema.sql
-│
-├── Database/
-│   └── hospital_db_backup.sql
-│
-├── Documentation/
-│   ├── Project_Report.pdf (3-5 pages)
-│   └── Screenshots/
-│       ├── login.png
-│       ├── admin_dashboard.png
-│       ├── doctor_view.png
-│       ├── receptionist_view.png
-│       ├── anonymization.png
-│       └── audit_logs.png
-│
-├── Demo_Video/
-│   └── demo_video_link.txt (Google Drive link)
-│
-└── README.txt (Brief instructions to run)
-```
-
----
-
-## 🎯 Grading Criteria Mapping
-
-### Privacy & GDPR Compliance (20 marks)
-- ✅ Consent management
-- ✅ Data retention policies
-- ✅ Right to be forgotten (anonymization)
-- ✅ Transparency in data handling
-
-### Confidentiality Implementation (20 marks)
-- ✅ Password hashing (bcrypt)
-- ✅ Data encryption (Fernet)
-- ✅ Data masking/anonymization
-- ✅ Role-based access control
-
-### Integrity (20 marks)
-- ✅ Comprehensive audit logging
-- ✅ Data validation
-- ✅ Timestamp tracking
-- ✅ Action attribution
-
-### Availability & Reliability (15 marks)
-- ✅ Error handling (try-except)
-- ✅ Data backup/export
-- ✅ System status monitoring
-- ✅ Session management
-
-### Dashboard Functionality (10 marks)
-- ✅ Intuitive UI
-- ✅ Role-based views
-- ✅ Real-time updates
-- ✅ Data visualization
-
-### Documentation (10 marks)
-- ✅ System diagrams
-- ✅ Screenshots
-- ✅ Implementation explanation
-- ✅ Code comments
-
-### Presentation/Demo (5 marks)
-- ✅ Clear demonstration
-- ✅ Feature showcase
-- ✅ Professional delivery
-
----
-
-## 🎁 Bonus Features (+2 marks each)
-
-### 1. Fernet Encryption ✅
-Already implemented in `utils.py`
-
-### 2. Real-time Activity Graphs
-Add to admin dashboard using plotly
-
-### 3. GDPR Features
-- Data retention timer ✅
-- User consent banner
-- Cookie notice
-
----
-
-## 📞 Support & Resources
-
-### Getting Help
-1. Check `SETUP_INSTRUCTIONS.md`
-2. Review error messages in terminal
-3. Check PostgreSQL logs
-4. Verify `.env` configuration
-5. Test database connection
-
-### Useful Commands
-```bash
-# Check Python version
-python --version
-
-# Check PostgreSQL status
-sudo systemctl status postgresql
-
-# View Streamlit logs
-streamlit run app.py --logger.level=debug
-
-# Database backup
-pg_dump -U postgres hospital_db > backup.sql
-
-# Restore database
-psql -U postgres hospital_db < backup.sql
-```
-
----
-
-## ✅ Pre-Submission Checklist
-
-- [ ] All files in correct structure
-- [ ] Database schema loads without errors
-- [ ] Application runs successfully
-- [ ] All three roles tested
-- [ ] Screenshots captured
-- [ ] Report completed (3-5 pages)
-- [ ] Demo video uploaded (optional)
-- [ ] Code has comments
-- [ ] README includes setup instructions
-- [ ] No hardcoded passwords
-- [ ] .env file excluded from submission
-
----
-
-**Good luck with your assignment! 🎉**

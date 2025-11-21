@@ -8,7 +8,7 @@ CREATE TYPE action_type AS ENUM ('login', 'logout', 'view', 'add', 'update', 'de
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,  -- Hashed password (never store plain text)
+    password_hash VARCHAR(255) NOT NULL,
     role user_role NOT NULL,
     full_name VARCHAR(100) NOT NULL,
     email VARCHAR(100),
@@ -17,8 +17,6 @@ CREATE TABLE users (
     last_login TIMESTAMP,
     CONSTRAINT chk_username_length CHECK (LENGTH(username) >= 3)
 );
-
--- Create index for faster login queries
 CREATE INDEX idx_users_username ON users(username);
 CREATE INDEX idx_users_role ON users(role);
 
@@ -188,33 +186,3 @@ SELECT
     (SELECT COUNT(*) FROM users WHERE is_active = TRUE) AS active_users,
     (SELECT COUNT(*) FROM logs WHERE timestamp > CURRENT_TIMESTAMP - INTERVAL '24 hours') AS actions_last_24h,
     (SELECT COUNT(*) FROM patients WHERE data_retention_date <= CURRENT_DATE) AS expired_records;
-
--- =====================================================
--- GRANT PERMISSIONS (Optional - for production)
--- =====================================================
--- Grant appropriate permissions to application user
--- GRANT SELECT, INSERT, UPDATE ON patients TO hospital_app_user;
--- GRANT SELECT ON users TO hospital_app_user;
--- GRANT INSERT ON logs TO hospital_app_user;
-
--- =====================================================
--- VERIFICATION QUERIES
--- =====================================================
--- Run these to verify your setup:
-
--- Check users
--- SELECT * FROM users;
-
--- Check patients
--- SELECT * FROM patients;
-
--- Check if triggers work
--- UPDATE patients SET diagnosis = 'Updated Diagnosis' WHERE patient_id = 1;
--- SELECT patient_id, diagnosis, last_modified FROM patients WHERE patient_id = 1;
-
--- Test logging function
--- SELECT log_user_action(1, 'admin', 'view', 'Testing log function', 1);
--- SELECT * FROM logs;
-
--- Check statistics
--- SELECT * FROM system_statistics;
